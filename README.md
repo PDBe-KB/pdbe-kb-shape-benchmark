@@ -2,7 +2,7 @@
 
 This repository contains a **benchmark dataset and accompanying notebook** developed in the context of **PDBe-KB complex aggregation** to support **computational resource estimation** for 3D shape-matching workflows.
 
-The benchmark is intended to characterise **computational scaling regimes**, not biological accuracy.
+The benchmark is intended to characterise typical computational scaling behaviour across different size and assembly-count regimes, not biological accuracy.
 
 ---
 
