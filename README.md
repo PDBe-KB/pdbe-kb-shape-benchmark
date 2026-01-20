@@ -21,7 +21,7 @@ RNA-containing and mixed-polymer complexes are excluded to ensure consistent siz
 
 ## Input Data
 
-The input is a CSV file containing **one row per complex**.  
+The input is a CSV file ("complex_median_weights.csv") containing **one row per complex**.  
 The file may contain additional metadata columns, but **only the following columns are used** to construct the benchmark:
 
 ```
@@ -72,9 +72,31 @@ For each populated cell:
 
 All assemblies belonging to each selected complex are included.
 
-This yields a compact, representative benchmark spanning multiple computational regimes while avoiding pathological outliers.
+This produces a small, representative benchmark that captures typical workloads across different size and complexity ranges, without being skewed by extreme cases.
 
 ---
+
+## Final Benchmark Output
+
+The primary output of this workflow is:
+
+```
+phase1_median_complexes.csv
+```
+
+This file defines the **final benchmark complex set**, with **one representative PDBe-KB complex per populated `(A_BIN × MW_BIN)` cell**.
+
+Each row corresponds to a complex selected as representative of a specific size and complexity regime, based on:
+- number of assemblies (`A_BIN`)
+- median molecular weight (`MW_BIN`)
+
+The representative complex in each cell is chosen as the **median molecular-weight complex** within that cell.
+
+This file is intended to be used as the **entry point for downstream benchmarking**, where:
+- all assemblies belonging to each listed complex are included, and
+- computational resource usage (memory, CPU, runtime) is measured.
+
+In practice, `phase1_median_complexes.csv` defines **which complexes should be run** to obtain a compact but representative estimate of computational cost.
 
 ## Intended Use
 
